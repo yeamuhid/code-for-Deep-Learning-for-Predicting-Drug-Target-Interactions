@@ -1,0 +1,30 @@
+# Define input layers
+input_drug = Input(shape=(drug_features.shape[1],))
+input_target = Input(shape=(target_features.shape[1],))
+
+# Define dense layers for drug input
+drug_hidden = Dense(128, activation='relu')(input_drug)
+drug_hidden = Dropout(0.2)(drug_hidden)
+drug_hidden = Dense(64, activation='relu')(drug_hidden)
+
+# Define dense layers for target input
+target_hidden = Dense(128, activation='relu')(input_target)
+target_hidden = Dropout(0.2)(target_hidden)
+target_hidden = Dense(64, activation='relu')(target_hidden)
+
+# Concatenate both hidden layers
+combined = Concatenate()([drug_hidden, target_hidden])
+
+# Add a final dense layer for prediction
+final_hidden = Dense(64, activation='relu')(combined)
+final_hidden = Dropout(0.3)(final_hidden)
+output = Dense(1, activation='sigmoid')(final_hidden)  # Binary classification
+
+# Create the model
+model = Model(inputs=[input_drug, input_target], outputs=output)
+
+# Compile the model
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Display the model architecture
+model.summary()

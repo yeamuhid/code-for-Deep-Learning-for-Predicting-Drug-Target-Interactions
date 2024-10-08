@@ -1,0 +1,9 @@
+# Make predictions on the test set
+y_pred = model.predict([X_test_drug, X_test_target])
+
+# Convert predictions to binary (0 or 1)
+y_pred_binary = (y_pred > 0.5).astype(int)
+
+# Calculate accuracy
+accuracy = accuracy_score(y_test, y_pred_binary)
+print(f'Prediction Accuracy: {accuracy:.4f}')

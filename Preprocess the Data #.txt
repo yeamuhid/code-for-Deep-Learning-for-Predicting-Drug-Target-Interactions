@@ -1,0 +1,10 @@
+# Normalize features (optional, depending on your data)
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+
+drug_features = scaler.fit_transform(drug_features)
+target_features = scaler.fit_transform(target_features)
+
+# Split the data into training and testing sets
+X_train_drug, X_test_drug, X_train_target, X_test_target, y_train, y_test = train_test_split(
+    drug_features, target_features, interaction_labels, test_size=0.2, random_state=42)

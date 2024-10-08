@@ -1,0 +1,1 @@
+model.save('drug_target_interaction_model.h5')

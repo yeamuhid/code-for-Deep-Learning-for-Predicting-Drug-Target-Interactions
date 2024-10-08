@@ -1,0 +1,7 @@
+# Train the model
+history = model.fit([X_train_drug, X_train_target], y_train, epochs=50, batch_size=32, 
+                    validation_split=0.2, verbose=1)
+
+# Evaluate the model on test data
+test_loss, test_acc = model.evaluate([X_test_drug, X_test_target], y_test, verbose=1)
+print(f'Test Accuracy: {test_acc:.4f}')

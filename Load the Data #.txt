@@ -1,0 +1,8 @@
+# Load drug features (assume shape is [num_samples, num_drug_features])
+drug_features = pd.read_csv('drug_features.csv').values
+
+# Load target features (assume shape is [num_samples, num_target_features])
+target_features = pd.read_csv('target_features.csv').values
+
+# Load interaction labels (0 or 1)
+interaction_labels = pd.read_csv('interaction_labels.csv').values
